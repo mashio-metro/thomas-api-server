@@ -3,10 +3,10 @@ jdk:
 - oraclejdk8
 branches:
   only:
-    - master
+  - master
 deploy:
   provider: heroku
   api_key:
-    secure: BKQYkr5nZYT/j6DpzbHJN9lc7lNs1aUoRxGcCk/F7zpf/sXK71TgakReVsZfwMUk+g/f5EZRYd0G0Qm7sMAqlEbEi3LjrwbJo9ESfIlDp1iv8KUQBn+7Y7QZw/dzes+pLXrx3TliziGuEarCJ4cLBxt6lRTWfjmQgG12Kv7HavE=
+    secure: QaiiN77Z/rabxt+pej9XZIe/P/w63EvvmN9or5elYvnAwO6cRnM2/HQCrc6miVuyodKs+7UqP0M1W0twZlxJdym0le5IQOntrAh8TJMPxR68/zEqSvQKEOgX3zn/K6r/cBOqvlfngqHmynbVuE8tLqMPZyilB0JmHFXuF9vEbHs=
     app:
       master: thomas-api
