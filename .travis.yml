@@ -7,6 +7,6 @@ branches:
 deploy:
   provider: heroku
   api_key:
-    secure: "BKQYkr5nZYT/j6DpzbHJN9lc7lNs1aUoRxGcCk/F7zpf/sXK71TgakReVsZfwMUk+g/f5EZRYd0G0Qm7sMAqlEbEi3LjrwbJo9ESfIlDp1iv8KUQBn+7Y7QZw/dzes+pLXrx3TliziGuEarCJ4cLBxt6lRTWfjmQgG12Kv7HavE="
+    secure: BKQYkr5nZYT/j6DpzbHJN9lc7lNs1aUoRxGcCk/F7zpf/sXK71TgakReVsZfwMUk+g/f5EZRYd0G0Qm7sMAqlEbEi3LjrwbJo9ESfIlDp1iv8KUQBn+7Y7QZw/dzes+pLXrx3TliziGuEarCJ4cLBxt6lRTWfjmQgG12Kv7HavE=
     app:
       master: thomas-api
