@@ -11,3 +11,6 @@ deploy:
   app: thomas-api
   on:
     repo: mashio-metro/thomas-api-server
+notifications:
+  slack:
+    secure: TmArPQVNfqP+Lehb7m56bjJSVhzE1wo1AJCzfyyCuRLKQNLcCjdSMDMPgFbJhDuTUfGSVruiId6OZfQkKaC/vIdtbi6Rgqog4e+JJN0WWoqq5kK13s4Owp7WHFNyc/3TffUwfQYmJ3N+BLuZnA6W14Q6NWDIl1jmjWH2upmBWJ8=
