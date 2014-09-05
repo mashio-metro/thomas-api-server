@@ -6,8 +6,8 @@ branches:
   - master
 deploy:
   provider: heroku
-  app:
-    master: thomas-api
   api_key:
-    secure: H8UZLGRt7+xNBhmtchMzx88whWEaEEEx+F7UczKKTbvorAtRVrqj7Y14qzcSGmIXFD1FM9ITdoj/1ckEDhlvRGLz/yR+h3qlTPElpcSbttyjBtLV7X/YV1jsGMWKuXpXXB5LNBPneWe7xxtmnoTIneF9fb5SQH6qFEjeD78Iu/Q=
-
+    secure: c8+z6vKLTOb75BRk0W/BbLtohs5bDZq9radWWtgT9r2TWxsfoybCQha1Fkrl9l2YG6HxMO+A2HEd1qBpJvn8EqAW8HnwUV4xPKtfEz7YRvVgy8RqIiH4EvROalZwu6hyYXonZGrwhJEuL9xQetMHVbfnQV1Vsw0B5lxKXj8aRD8=
+  app: thomas-api
+  on:
+    repo: mashio-metro/thomas-api-server
