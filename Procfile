@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar build/lib/thomas-api-server-1.0-jar-with-dependencies.jar
+web: java $JAVA_OPTS -jar build/libs/thomas-api-server-1.0.jar
