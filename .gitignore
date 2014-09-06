@@ -11,6 +11,6 @@
 hs_err_pid*
 
 #directory
+.idea
 .gradle/*
 build/*
-.idea/*
