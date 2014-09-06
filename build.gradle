@@ -6,7 +6,6 @@ group = 'groupId'
 version = '1.0'
 
 description = """"""
-
 defaultTasks = ['clean', 'jar']
 
 sourceCompatibility = 1.8
@@ -39,4 +38,4 @@ jar {
     }
 }
 
-task stage (dependsOn: ['clean', 'build'])
+task stage (dependsOn: ['clean', 'jar'])
