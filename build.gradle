@@ -39,4 +39,4 @@ jar {
     }
 }
 
-task stage (dependesOn : ['clean', 'build'])
+task stage (dependsOn: ['clean', 'build'])
