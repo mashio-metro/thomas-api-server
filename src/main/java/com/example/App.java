@@ -7,6 +7,7 @@ import spark.template.freemarker.FreeMarkerEngine;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static spark.Spark.get;
 import static spark.SparkBase.setPort;
@@ -18,7 +19,9 @@ import static spark.SparkBase.setPort;
 public class App {
 
 	public static void main(String[] args) {
-		setPort(Integer.parseInt(System.getenv("PORT")));
+		System.out.println(Optional.ofNullable(System.getenv("PORT")).orElse("3456"));
+		int port = Integer.parseInt(Optional.ofNullable(System.getenv("PORT")).orElse("3456"));
+		setPort(port);
 		{
 			Configuration conf = new Configuration();
 			File f = new File("template");
