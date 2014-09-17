@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Value;
 
 import com.example.Value.Category;
 import com.example.Value.Location;
