@@ -5,6 +5,8 @@ import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -34,11 +36,22 @@ public class App {
 		}, new FreeMarkerEngine());
 
 		get("/", (req, res) -> {
-			Map<String, Object> attributes = new HashMap<String, Object>();
-			attributes.put("message", "hello world");
-			return new ModelAndView(attributes, "hello.ftl");
-		}, new FreeMarkerEngine());
-
+			FoursquareClient foursquareClient = new FoursquareClient();
+			String json = "";
+			Double lat;
+			Double lng;
+			try {
+				lat = Double.parseDouble(Optional.ofNullable(req.queryParams("lat")).orElse(""));
+				lng = Double.parseDouble(Optional.ofNullable(req.queryParams("lng")).orElse(""));
+				json = foursquareClient.getVenue(lat, lng);
+			} catch (NumberFormatException e) {
+				System.out.println("error");
+			} catch (URISyntaxException | IOException e) {
+				System.out.println("errofr");
+				e.printStackTrace();
+			}
+			return json;
+		});
 	}
 
 }
