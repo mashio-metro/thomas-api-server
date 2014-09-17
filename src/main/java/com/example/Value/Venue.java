@@ -3,7 +3,6 @@ package com.example.Value;
 import com.example.Value.Category;
 import com.example.Value.Location;
 import com.example.Value.Stat;
-import fi.foyt.foursquare.api.entities.Contact;
 
 import java.util.List;
 
