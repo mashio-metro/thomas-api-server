@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Value.Venue;
+import com.example.Value.VenueResponse;
 import freemarker.template.Configuration;
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -35,23 +37,25 @@ public class App {
 			return new ModelAndView(attributes, "hello.ftl");
 		}, new FreeMarkerEngine());
 
-		get("/", (req, res) -> {
+		get("/venues/search", "application/json", (req, res) -> {
 			FoursquareClient foursquareClient = new FoursquareClient();
-			String json = "";
-			Double lat;
-			Double lng;
+			VenueResponse venueResponse = null;
+			double lat;
+			double lng;
+			double rad;
 			try {
 				lat = Double.parseDouble(Optional.ofNullable(req.queryParams("lat")).orElse(""));
 				lng = Double.parseDouble(Optional.ofNullable(req.queryParams("lng")).orElse(""));
-				json = foursquareClient.getVenue(lat, lng);
+				rad = Double.parseDouble(Optional.ofNullable(req.queryParams("rad")).orElse(""));
+				venueResponse = foursquareClient.searchVenue(lat, lng, rad);
 			} catch (NumberFormatException e) {
 				System.out.println("error");
 			} catch (URISyntaxException | IOException e) {
 				System.out.println("errofr");
 				e.printStackTrace();
 			}
-			return json;
-		});
+			return venueResponse;
+		}, new JsonTransformer());
 	}
 
 }
