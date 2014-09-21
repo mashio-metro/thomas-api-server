@@ -1,4 +1,6 @@
-package com.example.Value;
+package com.example;
+
+import com.example.Value.Venue.Venue;
 
 import java.util.List;
 
@@ -6,7 +8,7 @@ import java.util.List;
  * @author mukai_masaki on 2014/09/20.
  *         Copyright: CYBER AGNET. INC
  */
-public class VenueResponse {
+public class VenueSearchResponse {
 
 	private int status;
 	private List<Venue> venues;
