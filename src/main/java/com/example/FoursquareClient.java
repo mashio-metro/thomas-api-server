@@ -1,7 +1,7 @@
 package com.example;
 
-import com.example.Value.Venue;
-import com.example.Value.VenueResponse;
+import com.example.Value.Venue.Venue;
+import com.example.Value.recommentation.RecommendedGroup;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -45,7 +45,7 @@ public class FoursquareClient {
 		this.builder.addParameter("oauth_token", TOKEN);
 	}
 
-	public VenueResponse searchVenue(double lat, double lng, double rad) throws IOException, URISyntaxException {
+	public VenueSearchResponse searchVenue(double lat, double lng, double rad) throws IOException, URISyntaxException {
 		builder.setPath(ENDPOINT + "/venues/search");
 		builder.addParameter("ll", lng + "," + lat);
 		builder.addParameter("radius", ""+rad);
@@ -56,7 +56,7 @@ public class FoursquareClient {
 		System.out.println(responseCode);
 		String json =  EntityUtils.toString(res.getEntity());
 		List<Venue> venueList = new ArrayList<>();
-		VenueResponse venueResponse = new VenueResponse();
+		VenueSearchResponse venueSearchResponse = new VenueSearchResponse();
 		try {
 			JSONObject obj = new JSONObject(json);
 			System.out.println(obj);
@@ -70,11 +70,46 @@ public class FoursquareClient {
 			log.error("json=" + json, e);
 		}
 		if (!venueList.isEmpty()) {
-			venueResponse.setStatus(EXIST.getStatus());
+			venueSearchResponse.setStatus(EXIST.getStatus());
 		} else {
-			venueResponse.setStatus(NOT_EXIST.getStatus());
+			venueSearchResponse.setStatus(NOT_EXIST.getStatus());
 		}
-		venueResponse.setVenues(venueList);
-		return venueResponse;
+		venueSearchResponse.setVenues(venueList);
+		return venueSearchResponse;
+	}
+
+
+	public VenueExploreResponse exploreVenue(double lat, double lng, double rad) throws IOException, URISyntaxException {
+		builder.setPath(ENDPOINT + "/venues/explore");
+		builder.addParameter("ll", lng + "," + lat);
+		builder.addParameter("radius", ""+rad);
+		HttpGet getMethod = new HttpGet(builder.build());
+		HttpResponse res = httpClient.execute(getMethod);
+		int responseCode = res.getStatusLine().getStatusCode();
+		String json =  EntityUtils.toString(res.getEntity());
+		JSONObject obj = null;
+		JSONArray groupJsonArray = null;
+		List<RecommendedGroup> groupList = new ArrayList<>();
+		VenueExploreResponse response = new VenueExploreResponse();
+		try {
+			obj = new JSONObject(json);
+			System.out.println(obj);
+			groupJsonArray = obj.getJSONObject("response").getJSONArray("groups");
+		} catch (JSONException e) {
+			log.error("", e);
+		}
+		for (int i = 0; i < groupJsonArray.length(); i++) {
+			JSONObject groupJson = null;
+			try {
+				groupJson = groupJsonArray.getJSONObject(i);
+			} catch (JSONException e) {
+				log.error("", e);
+			}
+			RecommendedGroup group = new Gson().fromJson(groupJson.toString(), RecommendedGroup.class);
+			System.out.println(group);
+			groupList.add(group);
+		}
+		response.setGroups(groupList);
+		return response;
 	}
 }

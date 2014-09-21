@@ -10,9 +10,40 @@ import java.util.List;
  */
 public class Recommendation {
 
-	private Reason reason;
+	private Reason reasons;
 	private Venue venue;
 	private List<Tip> tips;
 
+	public Reason getReasons() {
+		return reasons;
+	}
 
+	public void setReasons(Reason reasons) {
+		this.reasons = reasons;
+	}
+
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+
+	public List<Tip> getTips() {
+		return tips;
+	}
+
+	public void setTips(List<Tip> tips) {
+		this.tips = tips;
+	}
+
+	@Override
+	public String toString() {
+		return "Recommendation{" +
+				"reason=" + reasons +
+				", venue=" + venue +
+				", tips=" + tips +
+				'}';
+	}
 }
