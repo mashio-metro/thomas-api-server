@@ -1,12 +1,11 @@
 package com.example;
 
+import com.example.Value.VenueResponse;
 import freemarker.template.Configuration;
-import spark.ModelAndView;
-import spark.template.freemarker.FreeMarkerEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import static spark.Spark.get;
@@ -18,6 +17,8 @@ import static spark.SparkBase.setPort;
  */
 public class App {
 
+	private static Logger log = LoggerFactory.getLogger(App.class);
+
 	public static void main(String[] args) {
 		System.out.println(Optional.ofNullable(System.getenv("PORT")).orElse("3456"));
 		int port = Integer.parseInt(Optional.ofNullable(System.getenv("PORT")).orElse("3456"));
@@ -27,18 +28,26 @@ public class App {
 			File f = new File("template");
 			conf.setClassForTemplateLoading(App.class, "/template");
 		}
-		get("/users/:user", (req, res) -> {
-			Map<String, Object> attributes = new HashMap<String, Object>();
-			attributes.put("message", "hello world");
-			return new ModelAndView(attributes, "hello.ftl");
-		}, new FreeMarkerEngine());
 
-		get("/", (req, res) -> {
-			Map<String, Object> attributes = new HashMap<String, Object>();
-			attributes.put("message", "hello world");
-			return new ModelAndView(attributes, "hello.ftl");
-		}, new FreeMarkerEngine());
-
+		get("/venues/search", "application/json", (req, res) -> {
+			FoursquareClient foursquareClient = new FoursquareClient();
+			VenueResponse venueResponse = null;
+			double lat = 0;
+			double lng = 0;
+			double rad = 0;
+			try {
+				lat = Double.parseDouble(Optional.ofNullable(req.queryParams("lat")).orElse(""));
+				lng = Double.parseDouble(Optional.ofNullable(req.queryParams("lng")).orElse(""));
+				rad = Double.parseDouble(Optional.ofNullable(req.queryParams("rad")).orElse(""));
+				venueResponse = foursquareClient.searchVenue(lat, lng, rad);
+			} catch (Exception e) {
+				log.error("lat = " + lat + ", lng = " + lng + ", rad = " + rad, e);
+				venueResponse = new VenueResponse();
+				venueResponse.setStatus(99);
+				return venueResponse;
+			}
+			return venueResponse;
+		}, new JsonTransformer());
 	}
 
 }
