@@ -6,7 +6,7 @@ package com.example.Value;
  */
 public enum Status {
 
-	EXIST(100), NOT_EXIST(101);
+	ERROR(99), EXIST(100), NOT_EXIST(101);
 
 	private int status;
 
