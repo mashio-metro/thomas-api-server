@@ -21,6 +21,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.Value.Status.*;
+
 /**
  * foursquareのAPIくためのファサード
  * @author mukai_masaki on 2014/09/17.
@@ -66,6 +68,11 @@ public class FoursquareClient {
 			}
 		} catch (JSONException e) {
 			log.error("json=" + json, e);
+		}
+		if (!venueList.isEmpty()) {
+			venueResponse.setStatus(EXIST.getStatus());
+		} else {
+			venueResponse.setStatus(NOT_EXIST.getStatus());
 		}
 		venueResponse.setVenues(venueList);
 		return venueResponse;

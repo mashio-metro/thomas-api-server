@@ -8,15 +8,15 @@ import java.util.List;
  */
 public class VenueResponse {
 
-	private int responseCode;
+	private int status;
 	private List<Venue> venues;
 
-	public int getResponseCode() {
-		return responseCode;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setResponseCode(int responseCode) {
-		this.responseCode = responseCode;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public List<Venue> getVenues() {
@@ -30,7 +30,7 @@ public class VenueResponse {
 	@Override
 	public String toString() {
 		return "VenueResponse{" +
-				"responseCode=" + responseCode +
+				"status=" + status +
 				", venues=" + venues +
 				'}';
 	}
