@@ -1,7 +1,7 @@
 package com.example;
 
-import com.example.route.ExploreRoute;
-import com.example.route.SearchRoute;
+import com.example.api.explore.ExploreRoute;
+import com.example.api.search.SearchRoute;
 import freemarker.template.Configuration;
 
 import java.util.Optional;

@@ -1,7 +1,6 @@
-package com.example.route;
+package com.example.api.explore;
 
-import com.example.FoursquareClient;
-import com.example.VenueSearchResponse;
+import com.example.api.FoursquareClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Request;
@@ -10,18 +9,20 @@ import spark.Route;
 
 import java.util.Optional;
 
+import static com.example.value.Status.ERROR;
+
 /**
  * @author mukai_masaki on 2014/10/05.
  *         Copyright: CYBER AGNET. INC
  */
-public class SearchRoute implements Route {
+public class ExploreRoute implements Route {
 
-	private static Logger log = LoggerFactory.getLogger(SearchRoute.class);
+	private static Logger log = LoggerFactory.getLogger(ExploreRoute.class);
 
 	@Override
 	public Object handle(Request req, Response res) {
 		FoursquareClient foursquareClient = new FoursquareClient();
-		VenueSearchResponse venueSearchResponse;
+		VenueExploreResponse venueExploreResponse;
 		double lat = 0;
 		double lng = 0;
 		double rad = 0;
@@ -29,14 +30,13 @@ public class SearchRoute implements Route {
 			lat = Double.parseDouble(Optional.ofNullable(req.queryParams("lat")).orElse(""));
 			lng = Double.parseDouble(Optional.ofNullable(req.queryParams("lng")).orElse(""));
 			rad = Double.parseDouble(Optional.ofNullable(req.queryParams("rad")).orElse(""));
-			venueSearchResponse = foursquareClient.searchVenue(lat, lng, rad);
+			venueExploreResponse = foursquareClient.exploreVenue(lat, lng, rad);
 		} catch (Exception e) {
 			log.error("lat = " + lat + ", lng = " + lng + ", rad = " + rad, e);
-			venueSearchResponse = new VenueSearchResponse();
-			venueSearchResponse.setStatus(99);
-			return venueSearchResponse;
+			venueExploreResponse = new VenueExploreResponse();
+			venueExploreResponse.setStatus(ERROR);
+			return venueExploreResponse;
 		}
-		return venueSearchResponse;
+		return venueExploreResponse;
 	}
-
 }

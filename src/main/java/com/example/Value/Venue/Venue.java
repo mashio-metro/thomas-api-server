@@ -1,4 +1,4 @@
-package com.example.Value.Venue;
+package com.example.value.Venue;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ public class Venue {
 	private Location location;
 	private List<Category> categories;
 	private Stats stats;
+	private Photos photos;
 
 	public String getId() {
 		return id;
@@ -62,6 +63,14 @@ public class Venue {
 		this.stats = stats;
 	}
 
+	public Photos getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Photos photos) {
+		this.photos = photos;
+	}
+
 	@Override
 	public String toString() {
 		return "Venue{" +
@@ -71,6 +80,7 @@ public class Venue {
 				", location=" + location +
 				", categories=" + categories +
 				", stats=" + stats +
+				", photos=" + photos +
 				'}';
 	}
 }

@@ -1,4 +1,4 @@
-package com.example.Value.recommentation;
+package com.example.value.recommentation;
 
 import java.util.List;
 

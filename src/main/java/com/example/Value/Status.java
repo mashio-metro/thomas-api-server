@@ -1,4 +1,4 @@
-package com.example.Value;
+package com.example.value;
 
 /**
  * @author mukai_masaki on 2014/09/22.

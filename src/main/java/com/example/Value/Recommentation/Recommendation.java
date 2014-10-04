@@ -1,6 +1,6 @@
-package com.example.Value.recommentation;
+package com.example.value.recommentation;
 
-import com.example.Value.Venue.Venue;
+import com.example.value.Venue.Venue;
 
 import java.util.List;
 

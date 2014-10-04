@@ -1,6 +1,6 @@
-package com.example;
+package com.example.api.search;
 
-import com.example.Value.Venue.Venue;
+import com.example.value.Venue.Venue;
 
 import java.util.List;
 

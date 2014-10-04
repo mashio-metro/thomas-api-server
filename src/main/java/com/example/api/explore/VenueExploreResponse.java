@@ -1,7 +1,7 @@
-package com.example;
+package com.example.api.explore;
 
-import com.example.Value.Status;
-import com.example.Value.recommentation.RecommendedGroup;
+import com.example.value.Status;
+import com.example.value.recommentation.RecommendedGroup;
 
 import java.util.List;
 

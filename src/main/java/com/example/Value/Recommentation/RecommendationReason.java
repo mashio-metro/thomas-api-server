@@ -1,4 +1,4 @@
-package com.example.Value.recommentation;
+package com.example.value.recommentation;
 
 /**
  * @author mukai_masaki on 2014/09/22.

@@ -1,4 +1,4 @@
-package com.example.Value.Venue;
+package com.example.value.Venue;
 
 /**
  * @author mukai_masaki on 2014/09/18.
