@@ -3,13 +3,9 @@ package com.example;
 import com.example.route.ExploreRoute;
 import com.example.route.SearchRoute;
 import freemarker.template.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.util.Optional;
 
-import static com.example.Value.Status.*;
 import static spark.Spark.get;
 import static spark.SparkBase.setPort;
 
@@ -32,3 +28,4 @@ public class App {
 	}
 
 }
+

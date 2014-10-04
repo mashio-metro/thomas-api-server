@@ -1,8 +1,6 @@
 package com.example.route;
 
-import com.example.App;
 import com.example.FoursquareClient;
-import com.example.Value.Status;
 import com.example.VenueExploreResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
